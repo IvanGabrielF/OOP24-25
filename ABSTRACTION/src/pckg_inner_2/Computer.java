@@ -80,5 +80,18 @@ public class Computer {
 
     }
 
+    public void powerOnSelfTest(){
+        TestComputer test = new TestComputer() {
+            @Override
+            public void runTest() {
+                processor.bootOS();
+                ram.testSystemRAM();
+                System.out.println("Checking other hardware resources...");
+
+
+            }
+        };
+    }
+
 
 }

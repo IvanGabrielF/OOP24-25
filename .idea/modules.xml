@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/ABSTRACTION/ABSTRACTION.iml" filepath="$PROJECT_DIR$/ABSTRACTION/ABSTRACTION.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ADDITIONAL/ADDITIONAL.iml" filepath="$PROJECT_DIR$/ADDITIONAL/ADDITIONAL.iml" />
       <module fileurl="file://$PROJECT_DIR$/FUNDAMENTALS/FUNDAMENTALS.iml" filepath="$PROJECT_DIR$/FUNDAMENTALS/FUNDAMENTALS.iml" />
       <module fileurl="file://$PROJECT_DIR$/OOPNaSatu.iml" filepath="$PROJECT_DIR$/OOPNaSatu.iml" />
     </modules>

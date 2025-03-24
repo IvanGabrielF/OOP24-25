@@ -10,7 +10,7 @@ public class Test {
         mp.saveToCloud();
         mp.surfTheNet();
         mp.performChatGPTResearch();
-        
+
 
     }
     private static void testDevices(Device[] devices){
@@ -22,3 +22,4 @@ public class Test {
         }
     }
 }
+

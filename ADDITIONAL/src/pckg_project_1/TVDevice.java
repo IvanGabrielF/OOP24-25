@@ -11,36 +11,38 @@ public class TVDevice extends MediaDevice{
     }
 
     @Override
-    public void turnONDevice() {
-        System.out.println("Turning on TV device...");
-
+    protected void initializeBaseMediaDevice() {
+        System.out.println("TVDevice is initialized!");
+        System.out.println("Current chanel: " + currentChannel);
     }
+
 
     @Override
     public void play() {
-        System.out.println("Playing tv on the chanel: " + currentChannel);
+        System.out.println("Playing on the chanel: " + currentChannel);
 
     }
 
     @Override
     public void pause() {
-        System.out.println("Turn on recorder to record tv program...");
+        System.out.println("Pause the program - automatically run the recorder...");
 
     }
 
     @Override
     public void stop() {
-        System.out.println("Stopping in tv is equal to turn off");
+        System.out.println("Turning off the TV Device!");
 
     }
 
     @Override
     public void next() {
-        if (Integer.parseInt(currentChannel) == MAXCH){
-            currentChannel = "1";
+        if (Integer.parseInt(currentChannel) == 999){
+            this.currentChannel = "1";
+            System.out.println("Going to first channel");
         }else {
-            int next = Integer.parseInt(currentChannel) + 1;
-            currentChannel = String.valueOf(next);
+            this.currentChannel = String.valueOf(Integer.parseInt(currentChannel)+1);
+            System.out.println("The next channel is: " + currentChannel);
         }
 
     }
@@ -48,12 +50,21 @@ public class TVDevice extends MediaDevice{
     @Override
     public void previous() {
         if (Integer.parseInt(currentChannel) == 1){
-            currentChannel = String.valueOf(MAXCH);
-        }else{
-            int previous = Integer.parseInt(currentChannel) - 1;
-            currentChannel = String.valueOf(previous);
-
+            this.currentChannel = String.valueOf(MAXCH);
+            System.out.println("Previous channel is: " + MAXCH);
+        }else {
+            this.currentChannel = String.valueOf(Integer.parseInt(currentChannel)-1);
+            System.out.println("Previous channel now is: " + currentChannel );
         }
 
+    }
+
+    @Override
+    public String toString() {
+        return "TVDevice{" +
+                "currentChannel='" + currentChannel + '\'' +
+                ", brand='" + brand + '\'' +
+                ", model='" + model + '\'' +
+                '}';
     }
 }

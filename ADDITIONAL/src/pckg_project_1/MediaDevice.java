@@ -12,12 +12,10 @@ public abstract class MediaDevice implements Playable {
 
     }
 
-    public abstract void turnONDevice();
 
-    public void initializeBaseMediaDevice(){
-        System.out.println("Initializing base media device.");
+    protected abstract void initializeBaseMediaDevice();
+
 
     }
 
 
-}

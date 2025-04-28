@@ -4,10 +4,12 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class AgeGuessGame {
-    private static Scanner scanner;
-    private static final ArrayList<Integer> guesses = new ArrayList<>();
 
-    public static void startGame(){
+    private static Scanner scanner;
+    private static  ArrayList<Integer> guesses;
+
+    public static void startGame(Player player){
+        guesses = new ArrayList<>();
         boolean continuePlay = true;
         scanner = new Scanner(System.in);
         int ageToGuess = AUX_CLS.generateAgeToGuess();
@@ -27,6 +29,8 @@ public class AgeGuessGame {
         }
         System.out.println("Out of game or game over!");
         provideGameStat();
+        player.addGameResults(guesses);
+
 
 
     }

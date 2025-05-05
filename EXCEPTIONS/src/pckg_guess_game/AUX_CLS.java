@@ -1,7 +1,9 @@
 package pckg_guess_game;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -90,6 +92,36 @@ public class AUX_CLS {
         }
     }
 
+    public static void savePlayersListToFile(List<Player> playerList, String path) {
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(new File(path)))) {
+            oos.writeObject(playerList);
+            System.out.println("All players from input list saved into file!");
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static ArrayList<Player> readPlayersFromFile(String filePath) {
+        ArrayList<Player> players = new ArrayList<>();
+
+
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(filePath))) {
+            players = (ArrayList<Player>) ois.readObject();
+            System.out.println("Success reading file: " + filePath);
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        return players;
+    }
+
+
+
     public static void savePlayerToFile(Player player, String filePath) {
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(new File(filePath)))) {
             oos.writeObject(player);
@@ -102,23 +134,49 @@ public class AUX_CLS {
         }
     }
 
+
+    public static ArrayList<Player> readPlayerObjectsFromFile(String filePath){
+        ArrayList<Player> players = new ArrayList<>();
+        try(FileInputStream fis = new FileInputStream(new File(filePath))){
+            while (fis.available() > 0){
+                ObjectInputStream ois = new ObjectInputStream(fis);
+                Player player = (Player) ois.readObject();
+                players.add(player);
+                System.out.println("New player from file added to list!");
+            }
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        return players;
+    }
+
     public static Player readPlayerFromFile(String filePath) {
         Player player = null;
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(new File(filePath)))) {
-            player = (Player) ois.readObject();
+            System.out.println("In try with resources block!");
+            int available = ois.available();
+            System.out.println("Bytes available: " + available);
+
 
         }catch (FileNotFoundException e){
             e.printStackTrace();
-            //tako i ove dvi doli
 
         } catch (IOException e) {
             e.printStackTrace();
-
-        }catch (ClassNotFoundException e){
-            e.printStackTrace();
-
         }
+
+//        }catch (ClassNotFoundException e){
+//            e.printStackTrace();
+//
+//        }
         return player;
 
     }
+
+
 }

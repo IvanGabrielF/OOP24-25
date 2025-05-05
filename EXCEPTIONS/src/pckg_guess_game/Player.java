@@ -28,6 +28,10 @@ public class Player implements Serializable {
         }
     }
 
+    public  void gameInfo(){
+        System.out.println("Total game played by player: " + gameStats.size());
+    }
+
     @Override
     public String toString() {
         return "Player{" +

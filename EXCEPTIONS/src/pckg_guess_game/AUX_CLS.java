@@ -178,5 +178,17 @@ public class AUX_CLS {
 
     }
 
+    public static void savePlayerToTxtFile(Player player, String filePath){
+        try(BufferedWriter bw = new BufferedWriter(new FileWriter(new File(filePath), true))){
+            bw.write(player.toString());
+            bw.newLine();
+
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }catch (IOException ioe){
+            ioe.printStackTrace();
+        }
+    }
 
 }
